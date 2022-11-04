@@ -4,7 +4,8 @@
  */
 package app.dao;
 
-//import java.sql.Connection;
+// Import classes necessárias
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
@@ -12,7 +13,7 @@ import java.sql.SQLException;
  *
  * @author vinic
  */
-public class Connection {
+public class ConnectionSN {
     
     
     // Método de conexão
@@ -31,8 +32,8 @@ public class Connection {
         
         // Criação connection string com o banco
         try {
-            String url = "jdbc:mysql://127.0.0.1:3306/simulador_notas?user=root";
-            conn = (Connection) DriverManager.getConnection(url);
+            String url = "jdbc:mysql://127.0.0.1:3306/mvc?user=root";
+            conn = DriverManager.getConnection(url);
         } catch(SQLException e){
             e.printStackTrace();
         }
