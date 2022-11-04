@@ -57,9 +57,19 @@ public class LoginView extends javax.swing.JFrame {
         jButtonEntrar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonEntrar.setText("Entrar");
         jButtonEntrar.setToolTipText("");
+        jButtonEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEntrarActionPerformed(evt);
+            }
+        });
 
         jButtonCadastrar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonCadastrar.setText("Cadastrar");
+        jButtonCadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCadastrarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -128,6 +138,18 @@ public class LoginView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
+        MenuPrincipalView menuPrincipal = new MenuPrincipalView();
+        menuPrincipal.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonEntrarActionPerformed
+
+    private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
+        CadastroUsuarioView menuCadastroUsuario = new CadastroUsuarioView();
+        menuCadastroUsuario.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
      * @param args the command line arguments
