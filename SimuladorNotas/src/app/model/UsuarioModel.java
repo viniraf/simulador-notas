@@ -58,6 +58,12 @@ public class UsuarioModel {
     public void cadastrarUsuario(UsuarioModel usuario) throws ExceptionDAO {
         new UsuarioDAO().cadastrarUsuario(usuario);
     }
+
+
+     //public boolean existePorUsuarioESenha(UsuarioModel usuario) throws ExceptionDAO {
+        //new UsuarioDAO().existeNoBancoPorUsuarioESenha(usuario);
+        //return true;
+    //}
     
     
 }

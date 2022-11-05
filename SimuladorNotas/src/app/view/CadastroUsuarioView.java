@@ -144,20 +144,7 @@ public class CadastroUsuarioView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
-        try {
-            boolean sucesso = controller.salvarUsuario();
-            
-            if (sucesso) {
-                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
-            } else {
-                JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o usuário. Tente novamente.");
-            }
-            
-        } catch (ExceptionDAO ex) {
-            Logger.getLogger(CadastroUsuarioView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-       
+        // todo
     }//GEN-LAST:event_jButtonSalvarActionPerformed
 
     /**

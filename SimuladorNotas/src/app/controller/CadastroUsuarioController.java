@@ -7,6 +7,7 @@ package app.controller;
 import app.dao.ExceptionDAO;
 import app.model.UsuarioModel;
 import app.view.CadastroUsuarioView;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -32,5 +33,6 @@ public class CadastroUsuarioController {
         }
         return false;
     }
+
     
 }
