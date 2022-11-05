@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 public class CadastroMateriaView extends javax.swing.JFrame {
     
     int idMateria = 0;
+    private MenuPrincipalView menuPrincipalView;
     private final CadastroMateriaController controller;
     
 
@@ -26,6 +27,7 @@ public class CadastroMateriaView extends javax.swing.JFrame {
     public CadastroMateriaView() {
         initComponents();
         controller = new CadastroMateriaController(this);
+
     }
     
       public void limparTela() {
@@ -51,8 +53,14 @@ public class CadastroMateriaView extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Simulador de Notas - Cadastro de matéria");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                fecharCadastroDeMateria(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
@@ -72,9 +80,19 @@ public class CadastroMateriaView extends javax.swing.JFrame {
 
         jButtonLimpar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
 
         jButtonCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         jButton4.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButton4.setText("Apagar");
@@ -154,6 +172,18 @@ public class CadastroMateriaView extends javax.swing.JFrame {
             Logger.getLogger(CadastroMateriaView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButtonSalvarMatertiaActionPerformed
+
+    private void fecharCadastroDeMateria(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_fecharCadastroDeMateria
+        controller.fecharCadastroMateria();
+    }//GEN-LAST:event_fecharCadastroDeMateria
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+       controller.fecharCadastroMateria();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        this.limparTela();
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments

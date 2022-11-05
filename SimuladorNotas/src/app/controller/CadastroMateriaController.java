@@ -7,6 +7,7 @@ package app.controller;
 import app.dao.ExceptionDAO;
 import app.model.MateriaModel;
 import app.view.CadastroMateriaView;
+import app.view.MenuPrincipalView;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,6 +23,11 @@ public class CadastroMateriaController {
     }
 
     
+    public void fecharCadastroMateria(){
+        view.setVisible(false);
+        MenuPrincipalView menuPrincipalView = new MenuPrincipalView();
+        menuPrincipalView.setVisible(true);
+    }
     
     public void cadastrarMateria() throws ExceptionDAO{
 
