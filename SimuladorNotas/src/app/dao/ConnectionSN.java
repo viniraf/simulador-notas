@@ -32,7 +32,7 @@ public class ConnectionSN {
         
         // Criação connection string com o banco
         try {
-            String url = "jdbc:mysql://127.0.0.1:3306/mvc?user=root";
+            String url = "jdbc:mysql://127.0.0.1:3306/simulador_notas?user=root";
             conn = DriverManager.getConnection(url);
         } catch(SQLException e){
             e.printStackTrace();

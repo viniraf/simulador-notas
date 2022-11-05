@@ -5,11 +5,16 @@
 package app.view;
 
 
+import app.controller.CadastroUsuarioController;
 import app.dao.ConnectionSN;
+import app.dao.ExceptionDAO;
 import com.mysql.jdbc.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 
 /**
@@ -18,11 +23,14 @@ import java.util.logging.Logger;
  */
 public class CadastroUsuarioView extends javax.swing.JFrame {
 
+    private final CadastroUsuarioController controller;
+
     /**
      * Creates new form LoginView
      */
     public CadastroUsuarioView() {
         initComponents();
+        controller = new CadastroUsuarioController(this);
     }
 
     /**
@@ -64,6 +72,11 @@ public class CadastroUsuarioView extends javax.swing.JFrame {
         jButtonSalvar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonSalvar.setText("Salvar");
         jButtonSalvar.setToolTipText("");
+        jButtonSalvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalvarActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
@@ -130,6 +143,23 @@ public class CadastroUsuarioView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButtonSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarActionPerformed
+        try {
+            boolean sucesso = controller.salvarUsuario();
+            
+            if (sucesso) {
+                JOptionPane.showMessageDialog(null, "Usuario cadastrado com sucesso");
+            } else {
+                JOptionPane.showMessageDialog(null, "Não foi possível cadastrar o usuário. Tente novamente.");
+            }
+            
+        } catch (ExceptionDAO ex) {
+            Logger.getLogger(CadastroUsuarioView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       
+    }//GEN-LAST:event_jButtonSalvarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -167,6 +197,24 @@ public class CadastroUsuarioView extends javax.swing.JFrame {
             }
         });
     }
+
+    public JPasswordField getjPasswordFieldSenha() {
+        return jPasswordFieldSenha;
+    }
+
+    public void setjPasswordFieldSenha(JPasswordField jPasswordFieldSenha) {
+        this.jPasswordFieldSenha = jPasswordFieldSenha;
+    }
+
+    public JTextField getjTextFieldUsuario() {
+        return jTextFieldUsuario;
+    }
+
+    public void setjTextFieldUsuario(JTextField jTextFieldUsuario) {
+        this.jTextFieldUsuario = jTextFieldUsuario;
+    }
+    
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvar;
