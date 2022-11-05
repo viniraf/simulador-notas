@@ -4,18 +4,26 @@
  */
 package app.view;
 
+import app.controller.MenuPrincipalController;
+
 /**
  *
  * @author vinic
  */
 public class MenuPrincipalView extends javax.swing.JFrame {
 
+    private final MenuPrincipalController controller;
+
     /**
      * Creates new form MenuPrincipalView
      */
     public MenuPrincipalView() {
         initComponents();
+        controller = new MenuPrincipalController(this);
     }
+    
+    // Construtor tela que eu quero ir
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,38 +35,43 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuConsultar = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItemCadastrar = new javax.swing.JMenu();
+        jMenuItemCadastrarMateria = new javax.swing.JMenuItem();
+        jMenuItemCadastrarNota = new javax.swing.JMenuItem();
+        jMenuItemCadastrarMediaDesejada = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Simulador de Notas");
         setResizable(false);
 
-        jMenu1.setText("Consultar");
-        jMenu1.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuConsultar.setText("Consultar");
+        jMenuConsultar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jMenuItem3.setText("jMenuItem3");
-        jMenu1.add(jMenuItem3);
+        jMenuItem3.setText("Materia x Nota");
+        jMenuConsultar.add(jMenuItem3);
 
-        jMenuItem4.setText("jMenuItem4");
-        jMenu1.add(jMenuItem4);
+        jMenuBar1.add(jMenuConsultar);
 
-        jMenuBar1.add(jMenu1);
+        jMenuItemCadastrar.setText("Cadastrar");
+        jMenuItemCadastrar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
-        jMenu2.setText("Cadastrar");
-        jMenu2.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemCadastrarMateria.setText("Materia");
+        jMenuItemCadastrarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAbrirCadastroMateriaActionPerformed(evt);
+            }
+        });
+        jMenuItemCadastrar.add(jMenuItemCadastrarMateria);
 
-        jMenuItem1.setText("jMenuItem1");
-        jMenu2.add(jMenuItem1);
+        jMenuItemCadastrarNota.setText("Nota");
+        jMenuItemCadastrar.add(jMenuItemCadastrarNota);
 
-        jMenuItem2.setText("jMenuItem2");
-        jMenu2.add(jMenuItem2);
+        jMenuItemCadastrarMediaDesejada.setText("Media desejada");
+        jMenuItemCadastrar.add(jMenuItemCadastrarMediaDesejada);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(jMenuItemCadastrar);
 
         setJMenuBar(jMenuBar1);
 
@@ -76,6 +89,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuItemAbrirCadastroMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAbrirCadastroMateriaActionPerformed
+        //controller.abrirCadastroMateria();
+
+    }//GEN-LAST:event_jMenuItemAbrirCadastroMateriaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -113,12 +131,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenu jMenuConsultar;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenu jMenuItemCadastrar;
+    private javax.swing.JMenuItem jMenuItemCadastrarMateria;
+    private javax.swing.JMenuItem jMenuItemCadastrarMediaDesejada;
+    private javax.swing.JMenuItem jMenuItemCadastrarNota;
     // End of variables declaration//GEN-END:variables
 }
