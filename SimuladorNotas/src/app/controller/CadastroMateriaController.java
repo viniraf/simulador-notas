@@ -41,9 +41,7 @@ public class CadastroMateriaController {
             view.limparTela();
         } else {
             JOptionPane.showMessageDialog(view, "Preencha o campo corretamente.");
-        }
-        
-        
+        }  
     }
     
     
