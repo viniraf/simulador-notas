@@ -21,6 +21,11 @@ public class CadastroMateriaController {
     public CadastroMateriaController(CadastroMateriaView view) {
         this.view = view;
     }
+    
+    public void limparTela() {
+        view.setjTextFieldNomeMateriaSetText("");
+        view.idMateria = 0;
+    }
 
     
     public void fecharCadastroMateria(){
@@ -38,7 +43,8 @@ public class CadastroMateriaController {
             MateriaModel materia = new MateriaModel(nomeMateriaDig);
             materia.cadastrarMateria(materia);
             JOptionPane.showMessageDialog(view, "Matéria cadastrada com sucesso");
-            view.limparTela();
+            limparTela();
+            
         } else {
             JOptionPane.showMessageDialog(view, "Preencha o campo corretamente.");
         }  

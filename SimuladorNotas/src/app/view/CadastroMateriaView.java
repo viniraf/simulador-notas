@@ -16,7 +16,7 @@ import javax.swing.JTextField;
  */
 public class CadastroMateriaView extends javax.swing.JFrame {
     
-    int idMateria = 0;
+    public int idMateria = 0;
     private MenuPrincipalView menuPrincipalView;
     private final CadastroMateriaController controller;
     
@@ -30,10 +30,7 @@ public class CadastroMateriaView extends javax.swing.JFrame {
 
     }
     
-      public void limparTela() {
-        jTextFieldNomeMateria.setText("");
-        idMateria = 0;
-    }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,7 +179,7 @@ public class CadastroMateriaView extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCancelarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        this.limparTela();
+        controller.limparTela();
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
@@ -224,8 +221,8 @@ public class CadastroMateriaView extends javax.swing.JFrame {
         return jTextFieldNomeMateria;
     }
 
-    public void setjTextFieldNomeMateria(JTextField jTextFieldNomeMateria) {
-        this.jTextFieldNomeMateria = jTextFieldNomeMateria;
+    public void setjTextFieldNomeMateriaSetText(String txt) {
+        this.jTextFieldNomeMateria.setText(txt);
     }
     
     
