@@ -52,6 +52,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuConsultar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jMenuItemConsultarMateria.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemConsultarMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seta.png"))); // NOI18N
         jMenuItemConsultarMateria.setText("Matéria");
         jMenuItemConsultarMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -61,10 +62,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuConsultar.add(jMenuItemConsultarMateria);
 
         jMenuItemConsultarNota.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemConsultarNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seta.png"))); // NOI18N
         jMenuItemConsultarNota.setText("Nota");
         jMenuConsultar.add(jMenuItemConsultarNota);
 
         jMenuItemConsultarMateriaxNota.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemConsultarMateriaxNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seta.png"))); // NOI18N
         jMenuItemConsultarMateriaxNota.setText("Materia x Nota");
         jMenuConsultar.add(jMenuItemConsultarMateriaxNota);
 
@@ -74,6 +77,7 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuItemCadastrar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
 
         jMenuItemCadastrarMateria.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemCadastrarMateria.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seta.png"))); // NOI18N
         jMenuItemCadastrarMateria.setText("Matéria");
         jMenuItemCadastrarMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,10 +87,12 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         jMenuItemCadastrar.add(jMenuItemCadastrarMateria);
 
         jMenuItemCadastrarNota.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemCadastrarNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seta.png"))); // NOI18N
         jMenuItemCadastrarNota.setText("Nota");
         jMenuItemCadastrar.add(jMenuItemCadastrarNota);
 
         jMenuItemCadastrarRelacionamentoMateriaeNota.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jMenuItemCadastrarRelacionamentoMateriaeNota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/seta.png"))); // NOI18N
         jMenuItemCadastrarRelacionamentoMateriaeNota.setText("Relacionamento matéria e nota");
         jMenuItemCadastrar.add(jMenuItemCadastrarRelacionamentoMateriaeNota);
 

@@ -17,6 +17,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="18" style="0"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/seta.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mat&#xe9;ria"/>
               </Properties>
               <Events>
@@ -28,6 +31,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="18" style="0"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/seta.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nota"/>
               </Properties>
             </MenuItem>
@@ -35,6 +41,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="18" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/seta.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Materia x Nota"/>
               </Properties>
@@ -54,6 +63,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="18" style="0"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/seta.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Mat&#xe9;ria"/>
               </Properties>
               <Events>
@@ -65,6 +77,9 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="18" style="0"/>
                 </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/seta.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Nota"/>
               </Properties>
             </MenuItem>
@@ -72,6 +87,9 @@
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Calibri" size="18" style="0"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/seta.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Relacionamento mat&#xe9;ria e nota"/>
               </Properties>
