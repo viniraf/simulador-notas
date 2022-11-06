@@ -5,6 +5,7 @@
 package app.controller;
 
 import app.view.CadastroMateriaView;
+import app.view.ConsultaMateriaView;
 import app.view.MenuPrincipalView;
 
 /**
@@ -24,6 +25,11 @@ public class MenuPrincipalController {
         cadastroMateriaView.setVisible(true);
         view.dispose();
     }
-    
-    
+
+    public void abrirConsultaMateria() {
+       ConsultaMateriaView consultaMateriaView = new ConsultaMateriaView();
+       consultaMateriaView.setVisible(true);
+       view.dispose();
+    }
+ 
 }

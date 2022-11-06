@@ -4,17 +4,22 @@
  */
 package app.view;
 
+import app.controller.ConsultaMateriaController;
+
 /**
  *
  * @author vinic
  */
 public class ConsultaMateriaView extends javax.swing.JFrame {
 
+    private final ConsultaMateriaController controller;
+
     /**
      * Creates new form ConsultaMateriaView
      */
     public ConsultaMateriaView() {
         initComponents();
+        controller = new ConsultaMateriaController(this);
     }
 
     /**
@@ -37,11 +42,17 @@ public class ConsultaMateriaView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(655, 554));
+        setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                fecharTelaConsultaMateria(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(102, 102, 102));
 
-        jLabelNomeMateria.setBackground(new java.awt.Color(255, 255, 255));
         jLabelNomeMateria.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
+        jLabelNomeMateria.setForeground(new java.awt.Color(255, 255, 255));
         jLabelNomeMateria.setText("Informe o nome da matéria:");
 
         jTextFieldNomeMateria.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
@@ -81,6 +92,11 @@ public class ConsultaMateriaView extends javax.swing.JFrame {
 
         jButtonCancelar.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jButtonCancelar.setText("Cancelar");
+        jButtonCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -90,14 +106,14 @@ public class ConsultaMateriaView extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(20, 20, 20)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabelNomeMateria)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jTextFieldNomeMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButtonConsultarMateria))
-                            .addComponent(jScrollPane1)))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 596, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(272, 272, 272)
                         .addComponent(jButtonCancelar)))
@@ -112,10 +128,10 @@ public class ConsultaMateriaView extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelNomeMateria)
                             .addComponent(jTextFieldNomeMateria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(jButtonConsultarMateria)))
-                .addGap(18, 18, 18)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jButtonConsultarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(34, 34, 34)
                 .addComponent(jButtonCancelar)
@@ -150,7 +166,16 @@ public class ConsultaMateriaView extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelarActionPerformed
+        controller.fecharTelaConsultaMateria();
+    }//GEN-LAST:event_jButtonCancelarActionPerformed
+
+    private void fecharTelaConsultaMateria(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_fecharTelaConsultaMateria
+        controller.fecharTelaConsultaMateria();
+    }//GEN-LAST:event_fecharTelaConsultaMateria
 
     /**
      * @param args the command line arguments

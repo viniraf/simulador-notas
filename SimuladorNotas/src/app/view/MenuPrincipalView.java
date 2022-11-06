@@ -53,6 +53,11 @@ public class MenuPrincipalView extends javax.swing.JFrame {
 
         jMenuItemConsultarMateria.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
         jMenuItemConsultarMateria.setText("Matéria");
+        jMenuItemConsultarMateria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemConsultarMateriaActionPerformed(evt);
+            }
+        });
         jMenuConsultar.add(jMenuItemConsultarMateria);
 
         jMenuItemConsultarNota.setFont(new java.awt.Font("Calibri", 0, 18)); // NOI18N
@@ -108,6 +113,10 @@ public class MenuPrincipalView extends javax.swing.JFrame {
         controller.abrirCadastroMateria();
 
     }//GEN-LAST:event_jMenuItemAbrirCadastroMateriaActionPerformed
+
+    private void jMenuItemConsultarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemConsultarMateriaActionPerformed
+        controller.abrirConsultaMateria();
+    }//GEN-LAST:event_jMenuItemConsultarMateriaActionPerformed
 
     /**
      * @param args the command line arguments
