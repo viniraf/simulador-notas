@@ -7,7 +7,7 @@ package View.Login;
 
 import Connection.MySQL;
 import Entities.Student;
-import View.Menu;
+import View.MenuItems.Menu;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
