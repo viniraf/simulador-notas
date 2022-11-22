@@ -20,7 +20,6 @@ public class MatterRegisterPanel extends javax.swing.JFrame {
 
     MySQL conectar = new MySQL();
     int studentId = StudentLoginPanel.studentId;
-    int idMatter;
     
     public MatterRegisterPanel() {
         initComponents();
@@ -128,31 +127,11 @@ public class MatterRegisterPanel extends javax.swing.JFrame {
             this.conectar.executarSQL(
             "SELECT * "
             + " FROM"
-            + " matter"
+            + " grades"
           + " WHERE"
-            + " name = '" + name + "';"
+            + " nameMatter = '" + name + "' AND idStudent = '" + studentId + "';"
             );
             return this.conectar.getResultSet().next(); 
-        
-        
-     }
- 
- 
-  private void MakeIdMatter() throws SQLException {
-        this.conectar.conectaBanco();
-        
-        String name = this.txtName.getText();
-        
-            this.conectar.executarSQL(
-            "SELECT * "
-            + " FROM"
-            + " matter"
-          + " WHERE"
-            + " name = '" + name + "';"
-            );
-            while(this.conectar.getResultSet().next()) {
-            idMatter = Integer.parseInt(this.conectar.getResultSet().getString(1));
-        }            
      }
     
  private void RegisterMatter() {
@@ -169,16 +148,10 @@ public class MatterRegisterPanel extends javax.swing.JFrame {
                     this.conectar.fechaBanco();
                 }
                 else {
-                
-                this.conectar.insertSQL("INSERT INTO matter ("
-                        + "name"
-                    + ") VALUES ("
-                        + "'" + txtName.getText() + "'"
-                    + ");");
-                MakeIdMatter();
-                this.conectar.insertSQL("INSERT INTO grades(idStudent, idMatter) VALUES ("
+                    String name = this.txtName.getText();
+                this.conectar.insertSQL("INSERT INTO grades(idStudent, nameMatter) VALUES ("
                         + "'" + studentId + "',"
-                        + "'" + idMatter + "'"
+                        + "'" + name + "'"
                     + ");");
                 JOptionPane.showMessageDialog(null, "Matéria cadastrada com sucesso!");
                 }

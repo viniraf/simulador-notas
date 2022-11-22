@@ -12,15 +12,10 @@ login			varchar(30)		not null				unique,
 password		varchar(40)		not null
 );
 
-create table matter (
-id				int				auto_increment		primary key,
-name			varchar(50)		not null			unique
-);
-
 create table grades (
 id				int				auto_increment		primary key,
 idStudent		int				not null			references student(id),
-idMatter		int				not null			references matter(id),
+nameMatter		varchar(50)		not null,
 noteAc1			float(4,2)		default(0),
 ac1Multiplier	float(4,2)		default(1),
 noteAc2			float(4,2)		default(0),
