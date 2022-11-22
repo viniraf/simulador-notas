@@ -19,7 +19,7 @@ name			varchar(50)		not null			unique
 
 create table grades (
 id				int				auto_increment		primary key,
-idProvider		int				not null			references student(id),
+idStudent		int				not null			references student(id),
 idMatter		int				not null			references matter(id),
 teacher			varchar(40)		not null,
 dateCreation	date			default(SYSDATE())
