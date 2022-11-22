@@ -12,11 +12,10 @@ import View.Login.StudentLoginPanel;
  */
 public class Menu extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Menu
-     */
+    
     public Menu() {
         initComponents();
+        this.setTitle("Simulador de Notas");
         this.setLocationRelativeTo(null);
     }
 
@@ -48,6 +47,7 @@ public class Menu extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(500, 500));
 
         PanelEmpresas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        PanelEmpresas.setForeground(new java.awt.Color(51, 51, 51));
 
         btnCadastrarEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCadastrarEmpresa.setText("CADASTRAR");
@@ -73,26 +73,26 @@ public class Menu extends javax.swing.JFrame {
         PanelEmpresasLayout.setHorizontalGroup(
             PanelEmpresasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEmpresasLayout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addGap(42, 42, 42)
+                .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+            .addGroup(PanelEmpresasLayout.createSequentialGroup()
+                .addGap(136, 136, 136)
                 .addComponent(lblMaterias)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(PanelEmpresasLayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
-                .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
         );
         PanelEmpresasLayout.setVerticalGroup(
             PanelEmpresasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PanelEmpresasLayout.createSequentialGroup()
-                .addGap(14, 14, 14)
+                .addContainerGap(43, Short.MAX_VALUE)
                 .addComponent(lblMaterias)
-                .addGap(43, 43, 43)
+                .addGap(18, 18, 18)
                 .addGroup(PanelEmpresasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(63, Short.MAX_VALUE))
+                .addGap(43, 43, 43))
         );
 
         jButtonSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -124,7 +124,7 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(PanelEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
