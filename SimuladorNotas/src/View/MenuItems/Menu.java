@@ -78,8 +78,8 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(PanelEmpresasLayout.createSequentialGroup()
                 .addGap(40, 40, 40)
-                .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 102, Short.MAX_VALUE)
+                .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
                 .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37))
         );
@@ -115,7 +115,7 @@ public class Menu extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
                         .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -132,7 +132,7 @@ public class Menu extends javax.swing.JFrame {
 
     private void btnCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarEmpresaActionPerformed
         MatterRegisterPanel obj = new MatterRegisterPanel();
-        obj.setVisible(true);  
+        obj.setVisible(true);
     }//GEN-LAST:event_btnCadastrarEmpresaActionPerformed
 
     private void btnBuscarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpresaActionPerformed

@@ -57,7 +57,7 @@
                       <Component id="jButtonSair" min="-2" pref="112" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="26" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -93,8 +93,8 @@
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-                  <Component id="btnCadastrarEmpresa" min="-2" pref="143" max="-2" attributes="0"/>
-                  <EmptySpace pref="102" max="32767" attributes="0"/>
+                  <Component id="btnCadastrarEmpresa" min="-2" pref="166" max="-2" attributes="0"/>
+                  <EmptySpace pref="79" max="32767" attributes="0"/>
                   <Component id="btnBuscarEmpresa" min="-2" pref="175" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               </Group>

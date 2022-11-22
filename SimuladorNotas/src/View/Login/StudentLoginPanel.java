@@ -21,10 +21,11 @@ import javax.swing.JTextField;
  */
 public class StudentLoginPanel extends javax.swing.JFrame {
     MySQL conectar = new MySQL();
-    private Student student;
-
+    public static int studentId;    
+    
     public StudentLoginPanel() {
         initComponents();
+
         
     }
 
@@ -167,6 +168,25 @@ public class StudentLoginPanel extends javax.swing.JFrame {
             return this.conectar.getResultSet().next(); 
      }
      
+     private void MakeStudentId() throws SQLException {
+        this.conectar.conectaBanco();
+        
+        String login = this.txtLogin.getText();
+        String password = this.txtPassword.getText();
+        
+            this.conectar.executarSQL(
+            "SELECT * "
+            + " FROM"
+            + " student"
+          + " WHERE"
+            + " login = '" + login + "'" + " and password = '" + password + "';"
+            );
+            while(this.conectar.getResultSet().next()) {
+            studentId = Integer.parseInt(this.conectar.getResultSet().getString(1));
+        } 
+             this.conectar.fechaBanco();
+     }
+     
      private void apagarDados(){
          this.txtLogin.setText("");
          this.txtPassword.setText("");
@@ -181,9 +201,10 @@ public class StudentLoginPanel extends javax.swing.JFrame {
     
     private void jButtonEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEntrarActionPerformed
         try {
-            boolean  exists = LoginEmployee();
+            boolean exists = LoginEmployee();
             if (exists) {
                 Menu obj = new Menu();
+                MakeStudentId();
                 JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
                 obj.setVisible(true);
                 this.dispose();
@@ -277,4 +298,5 @@ public class StudentLoginPanel extends javax.swing.JFrame {
     private javax.swing.JTextField txtLogin;
     private javax.swing.JPasswordField txtPassword;
     // End of variables declaration//GEN-END:variables
+
 }

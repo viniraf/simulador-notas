@@ -4,6 +4,7 @@ package Entities;
 
 public class Student {
     
+    private int id;
     private String name;
     private String cpf;
     private String email;
@@ -70,6 +71,14 @@ public class Student {
         
     public void SetRegistration(int registration) {
         this.registration = registration;
+    }
+    
+        public int GetId (){
+    return this.registration;
+}
+        
+    public void SetId(int id) {
+        this.id = id;
     }
     
 }
