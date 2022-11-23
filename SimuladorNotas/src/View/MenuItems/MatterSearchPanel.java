@@ -79,12 +79,12 @@ String campoVazio = "";
             txtAc1Multiplier.setText(this.conectar.getResultSet().getString(2));
             txtAc2Note.setText(this.conectar.getResultSet().getString(3));
             txtAc2Multiplier.setText(this.conectar.getResultSet().getString(4));
-            txtAfNote.setText(this.conectar.getResultSet().getString(1));
-            txtAfMultiplier.setText(this.conectar.getResultSet().getString(2));
-            txtSubNote.setText(this.conectar.getResultSet().getString(3));
-            txtSubMultiplier.setText(this.conectar.getResultSet().getString(4));
-            txtAgNote.setText(this.conectar.getResultSet().getString(1));
-            txtAgMultiplier.setText(this.conectar.getResultSet().getString(2));
+            txtAfNote.setText(this.conectar.getResultSet().getString(5));
+            txtAfMultiplier.setText(this.conectar.getResultSet().getString(6));
+            txtSubNote.setText(this.conectar.getResultSet().getString(7));
+            txtSubMultiplier.setText(this.conectar.getResultSet().getString(8));
+            txtAgNote.setText(this.conectar.getResultSet().getString(9));
+            txtAgMultiplier.setText(this.conectar.getResultSet().getString(10));
         }  
         } catch (Exception e) {
             System.out.println("Erro ao consultar Serviço: " + e.getMessage());
@@ -136,15 +136,15 @@ private void Calculate(String campoVazio) {
             this.conectar.updateSQL(
             "UPDATE grades SET "
             + "noteAc1 = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "noteAc2 = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "noteAf = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "noteSub = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "noteAg = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "ac1Multiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "ac2Multiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "afMultiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "subMultiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
-            + "agMultiplier = " + Float.parseFloat(txtAc1Note.getText()) + ""
+            + "noteAc2 = " + Float.parseFloat(txtAc2Note.getText()) + ","
+            + "noteAf = " + Float.parseFloat(txtAfNote.getText()) + ","
+            + "noteSub = " + Float.parseFloat(txtSubNote.getText()) + ","
+            + "noteAg = " + Float.parseFloat(txtAgNote.getText()) + ","
+            + "ac1Multiplier = " + Float.parseFloat(txtAc1Multiplier.getText()) + ","
+            + "ac2Multiplier = " + Float.parseFloat(txtAc2Multiplier.getText()) + ","
+            + "afMultiplier = " + Float.parseFloat(txtAfMultiplier.getText()) + ","
+            + "subMultiplier = " + Float.parseFloat(txtSubMultiplier.getText()) + ","
+            + "agMultiplier = " + Float.parseFloat(txtAgMultiplier.getText()) + ""
             + " WHERE id = " + consultaId + ";"
             );
             JOptionPane.showMessageDialog(null, "Calculado com sucesso!");
@@ -157,18 +157,18 @@ private void Calculate(String campoVazio) {
     }
     }
 
-private void chkCamposPesos (boolean chkPeso) {
-    if (txtAc1Multiplier.getText().equals("") || txtAc2Multiplier.getText().equals("") || txtAfMultiplier.getText().equals("") || txtSubMultiplier.getText().equals("") || txtAgMultiplier.getText().equals("") ) {
-        JOptionPane.showMessageDialog(null, "Todos os pesos devem estar preenchidos!");
-        chkPeso = false;
+private boolean chkCamposPesos () {
+    boolean chkPesos = true;
+    if (txtAc1Multiplier.getText().equals("") || txtAc2Multiplier.getText().equals("") || txtAfMultiplier.getText().equals("") || txtSubMultiplier.getText().equals("") || txtAgMultiplier.getText().equals("")) {
+        chkPesos = false;
     }
+    return chkPesos;
 }
 
-private void chkCamposNotas(boolean chkNote) {
-    
+private boolean chkCamposNotas() {
+    boolean chkNote = true;
     if (txtAc1Note.getText().equals("")) {
         if (txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
             chkNote = false;
         }
         else {
@@ -177,7 +177,6 @@ private void chkCamposNotas(boolean chkNote) {
     }
     else if (txtAc2Note.getText().equals("")){
         if (txtAc1Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
             chkNote = false;
         }
         else {
@@ -186,7 +185,6 @@ private void chkCamposNotas(boolean chkNote) {
     }
     else if (txtAfNote.getText().equals("")) {
         if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
             chkNote = false;
         }
         else {
@@ -195,7 +193,6 @@ private void chkCamposNotas(boolean chkNote) {
     }
     else if (txtSubNote.getText().equals("")) {
         if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
             chkNote = false;
         }        
         else {
@@ -204,7 +201,6 @@ private void chkCamposNotas(boolean chkNote) {
     }
     else if (txtAgNote.getText().equals("")) {
         if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtMedia.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
             chkNote = false;
         }     
         else {
@@ -213,15 +209,13 @@ private void chkCamposNotas(boolean chkNote) {
     }
     else if (txtMedia.getText().equals("")) {
         if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
             chkNote = false;
         }     
         else {
             campoVazio = "Media";
         }
     }
-
-
+        return chkNote;
 }
     
 private void ClearData() {
@@ -235,6 +229,7 @@ private void ClearData() {
     txtSubMultiplier.setText("");
     txtAgNote.setText("");
     txtAgMultiplier.setText("");
+    txtMedia.setText("");
     cbxMatter.removeAllItems();
 }
     
@@ -520,18 +515,17 @@ private void ClearData() {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-        boolean chkNote = true;
-        boolean chkPeso = true;
-        chkCamposNotas(chkNote);
-        chkCamposPesos(chkPeso);
-        if (chkNote) {
-            if (chkPeso) {
-                Calculate(campoVazio);
+            if (chkCamposNotas()) {
+                if (chkCamposPesos()) {
+                    Calculate(campoVazio);
             }
+                else {
+                    JOptionPane.showMessageDialog(null, "Todos os campos de pesos devem ser preenchidos!");
+                }
         }
-        else {
-            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
-        }
+            else {
+                JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnBuscarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNotasActionPerformed
