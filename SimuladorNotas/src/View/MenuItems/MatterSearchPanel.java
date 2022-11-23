@@ -5,9 +5,7 @@
 package View.MenuItems;
 
 import Connection.MySQL;
-import Entities.Company;
-import Entities.OnlyNumbers;
-import Entities.Services;
+import View.Login.StudentLoginPanel;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import javax.swing.JOptionPane;
@@ -20,119 +18,82 @@ public class MatterSearchPanel extends javax.swing.JFrame {
 
 MySQL conectar = new MySQL();
 
+
     public MatterSearchPanel() {
         initComponents();
         setLocationRelativeTo(null);
-        txtCnpj.setDocument(new OnlyNumbers());
-    }
-
-
-    private void SearchCnpj() {
-        this.conectar.conectaBanco();
-        Company newCompany = new Company();
-        cbxCompany.removeAllItems();
-        txtId.setText("");
-        
-        String consultaCnpj = this.txtCnpj.getText();
-        
-        try {
-            this.conectar.executarSQL(
-            "SELECT "
-            + "name,"
-            + "id"
-             + " FROM"
-            + " company"
-          + " WHERE"
-            + " cnpj = '" + consultaCnpj + "';"
-            );
-        while(this.conectar.getResultSet().next()) {
-            newCompany.SetName(this.conectar.getResultSet().getString(1));
-            txtId.setText(this.conectar.getResultSet().getString(2));
-        }
-        } catch (Exception e) {
-            System.out.println("Erro ao consultar Empresa: " + e.getMessage());
-            JOptionPane.showMessageDialog(null, "Erro ao buscar Empresa!");
-        
-        } finally {
-            if(newCompany.GetName() == null) {
-            JOptionPane.showMessageDialog(null, "Empresa não encontrada!");
-            }
-            else {
-            cbxCompany.addItem(newCompany.GetName());
-            }
-            this.conectar.fechaBanco();     
-    }
     }
     
-        private void SearchServicesId() {
+    
+        private void SearchMatter() {
             
         this.conectar.conectaBanco();
-        Company newCompany = new Company();
+        int consultaId = StudentLoginPanel.studentId;
         cbxMatter.removeAllItems();
-        
-        String consultaId = this.txtId.getText();
         
         try {
             this.conectar.executarSQL(
             "SELECT "
-            + "S.id"
+            + "nameMatter"
              + " FROM"
-            + " services S join company C on C.id = S.idCompany"
+            + " grades"
           + " WHERE"
-            + " C.id = '" + consultaId + "';"
+            + " idStudent = " + consultaId + ";"
             );
         while(this.conectar.getResultSet().next()) {
             cbxMatter.addItem(this.conectar.getResultSet().getString(1));
         }
         } catch (Exception e) {
-            System.out.println("Erro ao consultar Serviços: " + e.getMessage());
-            JOptionPane.showMessageDialog(null, "Erro ao buscar Serviços!");
+            System.out.println("Erro ao consultar Matérias: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao buscar matérias!");
         
         } finally {
             this.conectar.fechaBanco();     
     }
     }
-        private void SearchServices() {
+ 
+        private void SearchGrades() {
         this.conectar.conectaBanco();
-        Services newService = new Services();
-        
-        String consultaId =(String)cbxMatter.getSelectedItem();
+        int consultaId2 = StudentLoginPanel.studentId;
         
         try {
             this.conectar.executarSQL(
             "SELECT "
-            + "S.description,"
-            + "S.category,"
-            + "S.requester,"
-            + "S.finished,"
-            + "P.name,"
-            + "S.dateCreation"
-             + " FROM services S join provider P on P.id = S.idProvider"
+            + "noteAc1,"
+            + "ac1Multiplier,"
+            + "noteAc2,"
+            + "ac2Multiplier,"
+            + "noteAf,"
+            + "afMultiplier,"
+            + "noteSub,"
+            + "subMultiplier,"
+            + "noteAg,"
+            + "agMultiplier"
+             + " FROM grades"
           + " WHERE"
-            + " S.id = '" + consultaId + "';"
+            + " idStudent = " + consultaId2 + " and nameMatter = '" + cbxMatter.getSelectedItem() + "';"
             );
         while(this.conectar.getResultSet().next()) {
-            txtDescription.setText(this.conectar.getResultSet().getString(1));
-            txtCategory.setText(this.conectar.getResultSet().getString(2));
-            txtRequester.setText(this.conectar.getResultSet().getString(3));
-            txtFinished.setText(this.conectar.getResultSet().getString(4));
-            txtProvider.setText(this.conectar.getResultSet().getString(5));
-            String data = (String)this.conectar.getResultSet().getString(6);
-            
-            Date data2 = new SimpleDateFormat("yyyy-MM-dd").parse(data);
-            String dataFormatada = new SimpleDateFormat("dd/MM/yyyy").format(data2);
-            txtDate.setText(dataFormatada);
+            txtAc1Note.setText(this.conectar.getResultSet().getString(1));
+            txtAc1Multiplier.setText(this.conectar.getResultSet().getString(2));
+            txtAc2Note.setText(this.conectar.getResultSet().getString(3));
+            txtAc2Multiplier.setText(this.conectar.getResultSet().getString(4));
+            txtAfNote.setText(this.conectar.getResultSet().getString(1));
+            txtAfMultiplier.setText(this.conectar.getResultSet().getString(2));
+            txtSubNote.setText(this.conectar.getResultSet().getString(3));
+            txtSubMultiplier.setText(this.conectar.getResultSet().getString(4));
+            txtAgNote.setText(this.conectar.getResultSet().getString(1));
+            txtAgMultiplier.setText(this.conectar.getResultSet().getString(2));
         }  
         } catch (Exception e) {
             System.out.println("Erro ao consultar Serviço: " + e.getMessage());
             JOptionPane.showMessageDialog(null, "Erro ao buscar Serviço!");
-        
         } finally {
             this.conectar.fechaBanco();     
     }
     }
     
-private void UpdateFinished() {
+private void Calculate() {
           
         this.conectar.conectaBanco();
         String idService = (String)cbxMatter.getSelectedItem();
@@ -140,7 +101,7 @@ private void UpdateFinished() {
         try {
             this.conectar.updateSQL(
             "UPDATE services SET "
-            + "finished = '" + txtFinished.getText() + "'"
+            + "finished = '" + "'"
             + " WHERE id = '" + idService + "';"
             );
             JOptionPane.showMessageDialog(null, "Serviço atualizado com sucesso!");
@@ -155,25 +116,17 @@ private void UpdateFinished() {
     }
     
 private void ClearData() {
-    txtCnpj.setText("");
-    cbxCompany.removeAllItems();
-    txtId.setText("");
+    txtAc1Note.setText("");
+    txtAc1Multiplier.setText("");
+    txtAc2Note.setText("");
+    txtAc2Multiplier.setText("");
+    txtAfNote.setText("");
+    txtAfMultiplier.setText("");
+    txtSubNote.setText("");
+    txtSubMultiplier.setText("");
+    txtAgNote.setText("");
+    txtAgMultiplier.setText("");
     cbxMatter.removeAllItems();
-    txtCategory.setText("");
-    txtProvider.setText("");
-    txtRequester.setText("");
-    txtDate.setText("");
-    txtFinished.setText("");
-    txtDescription.setText("");
-}
-
-private void ClearData2() {
-    txtCategory.setText("");
-    txtProvider.setText("");
-    txtRequester.setText("");
-    txtDate.setText("");
-    txtFinished.setText("");
-    txtDescription.setText("");
 }
     
     
@@ -188,27 +141,27 @@ private void ClearData2() {
         btnBuscarMaterias = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         btnLimpar = new javax.swing.JButton();
-        btnAtualizar = new javax.swing.JButton();
+        btnCalcular = new javax.swing.JButton();
         btnBuscarNotas = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        txtAc1Multiplier = new javax.swing.JTextField();
         lblNotas = new javax.swing.JLabel();
         lblPesos = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
+        txtAc1Note = new javax.swing.JTextField();
+        txtAfNote = new javax.swing.JTextField();
+        txtAc2Multiplier = new javax.swing.JTextField();
+        txtAc2Note = new javax.swing.JTextField();
+        txtAfMultiplier = new javax.swing.JTextField();
+        txtAgNote = new javax.swing.JTextField();
+        txtSubMultiplier = new javax.swing.JTextField();
+        txtSubNote = new javax.swing.JTextField();
+        txtAgMultiplier = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField12 = new javax.swing.JTextField();
+        txtMedia = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -262,11 +215,11 @@ private void ClearData2() {
             }
         });
 
-        btnAtualizar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        btnAtualizar.setText("ATUALIZAR");
-        btnAtualizar.addActionListener(new java.awt.event.ActionListener() {
+        btnCalcular.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnCalcular.setText("CALCULAR");
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAtualizarActionPerformed(evt);
+                btnCalcularActionPerformed(evt);
             }
         });
 
@@ -329,40 +282,41 @@ private void ClearData2() {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtAc1Multiplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(txtAc2Multiplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtAc1Note, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(26, 26, 26)
-                                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtAc2Note, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(27, 27, 27)
                                 .addComponent(btnBuscarNotas)))
                         .addGap(26, 26, 26)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtAfNote, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAfMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(txtSubNote, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtSubMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(26, 26, 26)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(30, 30, 30)
+                                    .addComponent(txtAgMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtAgNote, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                        .addComponent(jLabel6)
-                                        .addGap(15, 15, 15))))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(30, 30, 30)
+                                        .addComponent(txtMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addGap(45, 45, 45)
+                                        .addComponent(jLabel6)))))))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -380,28 +334,28 @@ private void ClearData2() {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lblNotas)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtAc1Note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAfNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAc2Note, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAgNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSubNote, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAc1Multiplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(lblPesos)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtAc2Multiplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAfMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtSubMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtAgMultiplier, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField12, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtMedia, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnBuscarNotas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAtualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCalcular, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(14, Short.MAX_VALUE))
         );
@@ -449,24 +403,19 @@ private void ClearData2() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBuscarMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMateriasActionPerformed
-        SearchServices();
+       SearchMatter();
     }//GEN-LAST:event_btnBuscarMateriasActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         ClearData();
     }//GEN-LAST:event_btnLimparActionPerformed
 
-    private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
-        if (txtFinished.getText().equals("S") || txtFinished.getText().equals("N")) {
-            UpdateFinished();
-        }
-        else {
-            JOptionPane.showMessageDialog(null, "Na finalização só são aceitos \"S\" ou \"N\"");
-        }
-    }//GEN-LAST:event_btnAtualizarActionPerformed
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
+
+    }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnBuscarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNotasActionPerformed
-        // TODO add your handling code here:
+        SearchGrades();
     }//GEN-LAST:event_btnBuscarNotasActionPerformed
 
     /**
@@ -506,9 +455,9 @@ private void ClearData2() {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAtualizar;
     private javax.swing.JButton btnBuscarMaterias;
     private javax.swing.JButton btnBuscarNotas;
+    private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JComboBox<String> cbxMatter;
     private javax.swing.JLabel jLabel1;
@@ -520,19 +469,19 @@ private void ClearData2() {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     private javax.swing.JLabel lblMatter;
     private javax.swing.JLabel lblNotas;
     private javax.swing.JLabel lblPesos;
+    private javax.swing.JTextField txtAc1Multiplier;
+    private javax.swing.JTextField txtAc1Note;
+    private javax.swing.JTextField txtAc2Multiplier;
+    private javax.swing.JTextField txtAc2Note;
+    private javax.swing.JTextField txtAfMultiplier;
+    private javax.swing.JTextField txtAfNote;
+    private javax.swing.JTextField txtAgMultiplier;
+    private javax.swing.JTextField txtAgNote;
+    private javax.swing.JTextField txtMedia;
+    private javax.swing.JTextField txtSubMultiplier;
+    private javax.swing.JTextField txtSubNote;
     // End of variables declaration//GEN-END:variables
 }

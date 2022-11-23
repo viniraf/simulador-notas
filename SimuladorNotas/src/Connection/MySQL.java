@@ -63,7 +63,7 @@ public class MySQL {
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/" + nomeDoBanco, usuario, senha);
+            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/simuladorNotas?user=root&password=facens&useSSL=false" );
             //conn = DriverManager.getConnection("jdbc:mysql://localhost3306/banco_loja", "root", "root");
             
             if(conn != null){

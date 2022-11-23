@@ -32,10 +32,10 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
         PanelEmpresas = new javax.swing.JPanel();
-        btnCadastrarEmpresa = new javax.swing.JButton();
-        btnBuscarEmpresa = new javax.swing.JButton();
+        btnCadastrarMateria = new javax.swing.JButton();
+        btnBuscarMateria = new javax.swing.JButton();
         lblMaterias = new javax.swing.JLabel();
-        jButtonSair = new javax.swing.JButton();
+        btnSair = new javax.swing.JButton();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -49,19 +49,19 @@ public class Menu extends javax.swing.JFrame {
         PanelEmpresas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         PanelEmpresas.setForeground(new java.awt.Color(51, 51, 51));
 
-        btnCadastrarEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCadastrarEmpresa.setText("CADASTRAR");
-        btnCadastrarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+        btnCadastrarMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnCadastrarMateria.setText("CADASTRAR");
+        btnCadastrarMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCadastrarEmpresaActionPerformed(evt);
+                btnCadastrarMateriaActionPerformed(evt);
             }
         });
 
-        btnBuscarEmpresa.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnBuscarEmpresa.setText("BUSCAR/DELETAR");
-        btnBuscarEmpresa.addActionListener(new java.awt.event.ActionListener() {
+        btnBuscarMateria.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnBuscarMateria.setText("BUSCAR/DELETAR");
+        btnBuscarMateria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscarEmpresaActionPerformed(evt);
+                btnBuscarMateriaActionPerformed(evt);
             }
         });
 
@@ -74,9 +74,9 @@ public class Menu extends javax.swing.JFrame {
             PanelEmpresasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelEmpresasLayout.createSequentialGroup()
                 .addGap(42, 42, 42)
-                .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnCadastrarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
-                .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnBuscarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(56, 56, 56))
             .addGroup(PanelEmpresasLayout.createSequentialGroup()
                 .addGap(136, 136, 136)
@@ -90,16 +90,16 @@ public class Menu extends javax.swing.JFrame {
                 .addComponent(lblMaterias)
                 .addGap(18, 18, 18)
                 .addGroup(PanelEmpresasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCadastrarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarEmpresa, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnCadastrarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarMateria, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43))
         );
 
-        jButtonSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButtonSair.setText("SAIR");
-        jButtonSair.addActionListener(new java.awt.event.ActionListener() {
+        btnSair.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSair.setText("SAIR");
+        btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonSairActionPerformed(evt);
+                btnSairActionPerformed(evt);
             }
         });
 
@@ -114,7 +114,7 @@ public class Menu extends javax.swing.JFrame {
                         .addComponent(PanelEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(198, 198, 198)
-                        .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -123,28 +123,28 @@ public class Menu extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(PanelEmpresas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnSair, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCadastrarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarEmpresaActionPerformed
+    private void btnCadastrarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarMateriaActionPerformed
         MatterRegisterPanel obj = new MatterRegisterPanel();
         obj.setVisible(true);
-    }//GEN-LAST:event_btnCadastrarEmpresaActionPerformed
+    }//GEN-LAST:event_btnCadastrarMateriaActionPerformed
 
-    private void btnBuscarEmpresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEmpresaActionPerformed
-       // CompanySearchPanel obj = new CompanySearchPanel();
-        //obj.setVisible(true); 
-    }//GEN-LAST:event_btnBuscarEmpresaActionPerformed
+    private void btnBuscarMateriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarMateriaActionPerformed
+       MatterSearchPanel obj = new MatterSearchPanel();
+       obj.setVisible(true); 
+    }//GEN-LAST:event_btnBuscarMateriaActionPerformed
 
-    private void jButtonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSairActionPerformed
+    private void btnSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSairActionPerformed
         StudentLoginPanel obj = new StudentLoginPanel();
         obj.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jButtonSairActionPerformed
+    }//GEN-LAST:event_btnSairActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,9 +183,9 @@ public class Menu extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelEmpresas;
-    private javax.swing.JButton btnBuscarEmpresa;
-    private javax.swing.JButton btnCadastrarEmpresa;
-    private javax.swing.JButton jButtonSair;
+    private javax.swing.JButton btnBuscarMateria;
+    private javax.swing.JButton btnCadastrarMateria;
+    private javax.swing.JButton btnSair;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;

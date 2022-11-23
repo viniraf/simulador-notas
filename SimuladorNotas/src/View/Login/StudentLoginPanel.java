@@ -6,14 +6,11 @@ package View.Login;
 
 
 import Connection.MySQL;
-import Entities.Student;
 import View.MenuItems.Menu;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
@@ -25,7 +22,6 @@ public class StudentLoginPanel extends javax.swing.JFrame {
     
     public StudentLoginPanel() {
         initComponents();
-
         
     }
 
@@ -265,27 +261,6 @@ public class StudentLoginPanel extends javax.swing.JFrame {
             }
         });
     }
-
-    public JTextField getTxtLogin() {
-        return txtLogin;
-    }
-
-    public void setTxtLogin(JTextField txtLogin) {
-        this.txtLogin = txtLogin;
-    }
-
-    public JPasswordField getTxtPassword() {
-        return txtPassword;
-    }
-
-    public void setTxtPassword(JPasswordField txtPassword) {
-        this.txtPassword = txtPassword;
-    }
-
-   
-    
-    
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
