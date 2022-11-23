@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
 public class MatterSearchPanel extends javax.swing.JFrame {
 
 MySQL conectar = new MySQL();
-
+String campoVazio = "";
 
     public MatterSearchPanel() {
         initComponents();
@@ -53,6 +53,7 @@ MySQL conectar = new MySQL();
     }
  
         private void SearchGrades() {
+            
         this.conectar.conectaBanco();
         int consultaId2 = StudentLoginPanel.studentId;
         
@@ -93,27 +94,135 @@ MySQL conectar = new MySQL();
     }
     }
     
-private void Calculate() {
-          
-        this.conectar.conectaBanco();
-        String idService = (String)cbxMatter.getSelectedItem();
+private void Calculate(String campoVazio) {
+        int consultaId = StudentLoginPanel.studentId;
+        float note = 0;
+        float somaPesos = Float.parseFloat(txtAc1Multiplier.getText()) + Float.parseFloat(txtAc2Multiplier.getText()) + Float.parseFloat(txtAfMultiplier.getText()) + Float.parseFloat(txtSubMultiplier.getText()) + Float.parseFloat(txtAgMultiplier.getText());
         
         try {
+            switch (campoVazio) {
+                case "Ac1Note":
+                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtAc1Multiplier.getText());
+                    txtAc1Note.setText(Float.toString(note));
+                    break;
+                        
+                case "Ac2Note":
+                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtAc2Multiplier.getText());
+                    txtAc2Note.setText(Float.toString(note));
+                    break;
+                    
+                case "AfNote":
+                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtAfMultiplier.getText());
+                    txtAfNote.setText(Float.toString(note));
+                    break;
+                
+                case "SubNote":
+                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtSubMultiplier.getText());
+                    txtAfNote.setText(Float.toString(note));
+                    break;
+                    
+                case "AgNote":
+                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText())) / Float.parseFloat(txtAgMultiplier.getText());
+                    txtAfNote.setText(Float.toString(note));
+                    break;
+                    
+                case "Media":
+                    note = (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) + Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) + Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) + Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) + Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / somaPesos;
+                    txtMedia.setText(Float.toString(note));
+                    break;
+            }
+            
+            this.conectar.conectaBanco();
             this.conectar.updateSQL(
-            "UPDATE services SET "
-            + "finished = '" + "'"
-            + " WHERE id = '" + idService + "';"
+            "UPDATE grades SET "
+            + "noteAc1 = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "noteAc2 = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "noteAf = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "noteSub = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "noteAg = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "ac1Multiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "ac2Multiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "afMultiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "subMultiplier = " + Float.parseFloat(txtAc1Note.getText()) + ","
+            + "agMultiplier = " + Float.parseFloat(txtAc1Note.getText()) + ""
+            + " WHERE id = " + consultaId + ";"
             );
-            JOptionPane.showMessageDialog(null, "Serviço atualizado com sucesso!");
+            JOptionPane.showMessageDialog(null, "Calculado com sucesso!");
             } catch (Exception e) {
-            System.out.println("Erro ao atualizar o serviço: " + e.getMessage());
-            JOptionPane.showMessageDialog(null, "Erro ao atualizar o serviço!");
+            System.out.println("Erro ao calcular: " + e.getMessage());
+            JOptionPane.showMessageDialog(null, "Erro ao calcular!");
         
         } finally {
-            ClearData();
             this.conectar.fechaBanco();
     }
     }
+
+private void chkCamposPesos (boolean chkPeso) {
+    if (txtAc1Multiplier.getText().equals("") || txtAc2Multiplier.getText().equals("") || txtAfMultiplier.getText().equals("") || txtSubMultiplier.getText().equals("") || txtAgMultiplier.getText().equals("") ) {
+        JOptionPane.showMessageDialog(null, "Todos os pesos devem estar preenchidos!");
+        chkPeso = false;
+    }
+}
+
+private void chkCamposNotas(boolean chkNote) {
+    
+    if (txtAc1Note.getText().equals("")) {
+        if (txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            chkNote = false;
+        }
+        else {
+            campoVazio = "Ac1Note";
+        }
+    }
+    else if (txtAc2Note.getText().equals("")){
+        if (txtAc1Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            chkNote = false;
+        }
+        else {
+            campoVazio = "Ac2Note";
+        }
+    }
+    else if (txtAfNote.getText().equals("")) {
+        if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            chkNote = false;
+        }
+        else {
+            campoVazio = "AfNote";
+        }
+    }
+    else if (txtSubNote.getText().equals("")) {
+        if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtAgNote.getText().equals("") || txtMedia.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            chkNote = false;
+        }        
+        else {
+            campoVazio = "SubNote";
+        }
+    }
+    else if (txtAgNote.getText().equals("")) {
+        if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtMedia.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            chkNote = false;
+        }     
+        else {
+            campoVazio = "AgNote";
+        }
+    }
+    else if (txtMedia.getText().equals("")) {
+        if (txtAc1Note.getText().equals("") || txtAc2Note.getText().equals("") || txtAfNote.getText().equals("") || txtSubNote.getText().equals("") || txtAgNote.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+            chkNote = false;
+        }     
+        else {
+            campoVazio = "Media";
+        }
+    }
+
+
+}
     
 private void ClearData() {
     txtAc1Note.setText("");
@@ -411,7 +520,18 @@ private void ClearData() {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
-
+        boolean chkNote = true;
+        boolean chkPeso = true;
+        chkCamposNotas(chkNote);
+        chkCamposPesos(chkPeso);
+        if (chkNote) {
+            if (chkPeso) {
+                Calculate(campoVazio);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Só é permitido deixar um campo vazio nas notas, incluindo a média!");
+        }
     }//GEN-LAST:event_btnCalcularActionPerformed
 
     private void btnBuscarNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarNotasActionPerformed
