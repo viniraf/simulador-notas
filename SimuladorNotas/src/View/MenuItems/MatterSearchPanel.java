@@ -118,12 +118,12 @@ private void Calculate(String campoVazio) {
                 
                 case "SubNote":
                     note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtSubMultiplier.getText());
-                    txtAfNote.setText(Float.toString(note));
+                    txtSubNote.setText(Float.toString(note));
                     break;
                     
                 case "AgNote":
                     note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText())) / Float.parseFloat(txtAgMultiplier.getText());
-                    txtAfNote.setText(Float.toString(note));
+                    txtAgNote.setText(Float.toString(note));
                     break;
                     
                 case "Media":
@@ -218,7 +218,7 @@ private boolean chkCamposNotas() {
         return chkNote;
 }
     
-private void ClearData() {
+private void ClearData2() {
     txtAc1Note.setText("");
     txtAc1Multiplier.setText("");
     txtAc2Note.setText("");
@@ -511,7 +511,7 @@ private void ClearData() {
     }//GEN-LAST:event_btnBuscarMateriasActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
-        ClearData();
+        ClearData2();
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
