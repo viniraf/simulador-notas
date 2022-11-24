@@ -101,28 +101,28 @@ private void Calculate(String campoVazio) {
         
         try {
             switch (campoVazio) {
-                case "Ac1Note":
-                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtAc1Multiplier.getText());
+                                case "Ac1Note":
+                    note = ((Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText())) - (Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText())) - (Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText())) - (Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText()))) / Float.parseFloat(txtAc1Multiplier.getText());
                     txtAc1Note.setText(Float.toString(note));
                     break;
                         
                 case "Ac2Note":
-                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtAc2Multiplier.getText());
+                    note = ((Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText())) - (Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText())) - (Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText())) - (Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText()))) / Float.parseFloat(txtAc2Multiplier.getText());
                     txtAc2Note.setText(Float.toString(note));
                     break;
                     
                 case "AfNote":
-                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtAfMultiplier.getText());
+                    note = ((Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText())) - (Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText())) - (Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText())) - (Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText()))) / Float.parseFloat(txtAfMultiplier.getText());
                     txtAfNote.setText(Float.toString(note));
                     break;
                 
                 case "SubNote":
-                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText())) / Float.parseFloat(txtSubMultiplier.getText());
+                    note = ((Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText())) - (Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText())) - (Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText())) - (Float.parseFloat(txtAgNote.getText())*Float.parseFloat(txtAgMultiplier.getText()))) / Float.parseFloat(txtSubMultiplier.getText());
                     txtSubNote.setText(Float.toString(note));
                     break;
                     
                 case "AgNote":
-                    note = (Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText()) - Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText()) - Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText()) - Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText())) / Float.parseFloat(txtAgMultiplier.getText());
+                    note = ((Float.parseFloat(txtMedia.getText())*somaPesos) - (Float.parseFloat(txtAc1Note.getText())*Float.parseFloat(txtAc1Multiplier.getText())) - (Float.parseFloat(txtAc2Note.getText())*Float.parseFloat(txtAc2Multiplier.getText())) - (Float.parseFloat(txtAfNote.getText())*Float.parseFloat(txtAfMultiplier.getText())) - (Float.parseFloat(txtSubNote.getText())*Float.parseFloat(txtSubMultiplier.getText()))) / Float.parseFloat(txtAgMultiplier.getText());
                     txtAgNote.setText(Float.toString(note));
                     break;
                     
