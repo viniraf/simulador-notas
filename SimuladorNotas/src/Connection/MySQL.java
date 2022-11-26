@@ -18,10 +18,17 @@ public class MySQL {
     private Statement statement; //variável de manipulação do SQL
     private ResultSet resultSet;
     
+    /*
     private String servidor = "localhost:3306";
     private String nomeDoBanco = "SimuladorNotas";
     private String usuario = "root";
     private String senha = "facens";
+    */
+    
+    private String servidor = "127.0.0.1:3306";
+    private String nomeDoBanco = "SimuladorNotas";
+    private String usuario = "root";
+    private String senha = "";
     
     //Construtor    
     public MySQL(){
@@ -63,7 +70,7 @@ public class MySQL {
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/simuladorNotas?user=root&password=facens&useSSL=false" );
+            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/simuladorNotas?user=root&useSSL=false" );
             //conn = DriverManager.getConnection("jdbc:mysql://localhost3306/banco_loja", "root", "root");
             
             if(conn != null){
