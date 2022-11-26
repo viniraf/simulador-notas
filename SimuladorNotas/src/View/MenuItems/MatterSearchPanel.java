@@ -145,7 +145,7 @@ private void Calculate(String campoVazio) {
             + "afMultiplier = " + Float.parseFloat(txtAfMultiplier.getText()) + ","
             + "subMultiplier = " + Float.parseFloat(txtSubMultiplier.getText()) + ","
             + "agMultiplier = " + Float.parseFloat(txtAgMultiplier.getText()) + ""
-            + " WHERE id = " + consultaId + ";"
+            + " WHERE idStudent = " + consultaId + " and nameMatter = '" + cbxMatter.getSelectedItem() + "';"
             );
             JOptionPane.showMessageDialog(null, "Calculado com sucesso!");
             } catch (Exception e) {
