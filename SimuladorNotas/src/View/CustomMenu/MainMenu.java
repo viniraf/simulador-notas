@@ -5,6 +5,9 @@
 package View.CustomMenu;
 
 
+import View.CustomMenuItems.MatterRegister;
+import View.CustomMenuItems.MatterSearch;
+import View.Login.StudentLoginPanel;
 import java.awt.Color;
 import java.awt.Component;
 import javaswingdev.GradientDropdownMenu;
@@ -36,32 +39,21 @@ public class MainMenu extends javax.swing.JFrame {
             @Override
             public void selected(int index, int subIndex, boolean menuItem) {
                 
-                if(index == 1 && subIndex == 1) {
-                   //showForm(new ProviderRegister());
-                } else if (index == 1 && subIndex == 2){
-                    //showForm(new ProviderSearch());
-                }
+                if(index == 0) {
+                   showForm(new MatterRegister());
+                } 
                 
-                if (index == 2 && subIndex == 1) {
-                    //showForm(new CompanyRegister());
-                } else if (index == 2 && subIndex == 2){
-                    //showForm(new CompanySearch());
-                }
+                if(index == 1) {
+                   showForm(new MatterSearch());
+                } 
                 
-                if (index == 3 && subIndex == 1){
-                    //showForm(new ServiceRegister());
-                } else if (index == 3 && subIndex == 2){
-                    //showForm(new ServiceSearch());
-                }
-                
-                if (index == 4 && subIndex == 1){
+                if (index == 2 && subIndex == 1){
                     close();
-                    //Login login = new Login();
-                    //login.setVisible(true);
-                } else if (index == 4 && subIndex == 2){
+                    StudentLoginPanel login = new StudentLoginPanel();
+                    login.setVisible(true);
+                } else if (index == 2 && subIndex == 2){
                     System.exit(0);
                 }
-
             }
         });
     }

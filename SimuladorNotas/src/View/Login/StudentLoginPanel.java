@@ -6,7 +6,7 @@ package View.Login;
 
 
 import Connection.MySQL;
-import View.MenuItems.Menu;
+import View.CustomMenu.MainMenu;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -199,7 +199,7 @@ public class StudentLoginPanel extends javax.swing.JFrame {
         try {
             boolean exists = LoginEmployee();
             if (exists) {
-                Menu obj = new Menu();
+                MainMenu obj = new MainMenu();
                 MakeStudentId();
                 JOptionPane.showMessageDialog(null, "Login efetuado com sucesso!");
                 obj.setVisible(true);
@@ -235,7 +235,7 @@ public class StudentLoginPanel extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
