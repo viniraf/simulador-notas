@@ -29,6 +29,7 @@ public class MainMenu extends javax.swing.JFrame {
         menu.setGradientColor(new Color(27, 148, 201), new Color (27, 148, 201));
         menu.setBackground(new Color(69, 183, 233));
         menu.setHeaderGradient(false);
+        showForm(new MatterRegister());
      
         
         menu.addItem("Cadastrar Matérias");
