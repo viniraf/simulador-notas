@@ -21,8 +21,8 @@ public class MySQL {
     
     // Para mudar a conexão do banco, comente algum bloco e descomente outro
     
-    /*
     // Bloco 1 - Pc facens
+    /*
     private String servidor = "localhost:3306";
     private String nomeDoBanco = "SimuladorNotas";
     private String usuario = "root";
@@ -33,7 +33,23 @@ public class MySQL {
     private String servidor = "127.0.0.1:3306";
     private String nomeDoBanco = "SimuladorNotas";
     private String usuario = "root";
-    private String senha = "facens";
+    private String senha = "";
+    
+    // Bloco 3 - Pc ander
+    /*
+    private String servidor = "127.0.0.1:3306";
+    private String nomeDoBanco = "SimuladorNotas";
+    private String usuario = "root";
+    private String senha = "";
+    */
+    
+    // Bloco 4 - Pc gaby
+    /*
+    private String servidor = "127.0.0.1:3306";
+    private String nomeDoBanco = "SimuladorNotas";
+    private String usuario = "root";
+    private String senha = "";
+    */
     
     //Construtor    
     public MySQL(){

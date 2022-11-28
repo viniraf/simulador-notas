@@ -28,4 +28,5 @@ noteAg			float(4,2)		default 0,
 agMultiplier	float(4,2)		default 1
 );
 
-insert into student (name, cpf, email, registration, login, password) values ('admin', '123', 'admin', 123, 'admin', '123'), ('admin2', '1234', 'admin2', 1234, 'admin2', '1234');
+insert into student (name, cpf, email, registration, login, password) values 
+('admin', '123', 'admin', 123, 'admin', '123');
