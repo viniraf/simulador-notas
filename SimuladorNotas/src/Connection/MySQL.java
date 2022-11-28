@@ -33,7 +33,7 @@ public class MySQL {
     private String servidor = "127.0.0.1:3306";
     private String nomeDoBanco = "SimuladorNotas";
     private String usuario = "root";
-    private String senha = "";
+    private String senha = "facens";
     
     //Construtor    
     public MySQL(){
@@ -75,7 +75,7 @@ public class MySQL {
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
 
-            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/" + nomeDoBanco + "?user=" + usuario + "&useSSL=false" );
+            conn = DriverManager.getConnection("jdbc:mysql://" + servidor + "/" + nomeDoBanco + "?user=" + usuario + "&password=" + senha + "&useSSL=false" );
             //conn = DriverManager.getConnection("jdbc:mysql://localhost3306/banco_loja", "root", "root");
             
             if(conn != null){
