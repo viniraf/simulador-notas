@@ -30,18 +30,20 @@ public class MySQL {
     */
     
     // Bloco 2 - Pc vini
-    private String servidor = "127.0.0.1:3306";
-    private String nomeDoBanco = "SimuladorNotas";
-    private String usuario = "root";
-    private String senha = "";
-    
-    // Bloco 3 - Pc ander
     /*
     private String servidor = "127.0.0.1:3306";
     private String nomeDoBanco = "SimuladorNotas";
     private String usuario = "root";
     private String senha = "";
     */
+    
+    // Bloco 3 - Pc ander
+    
+    private String servidor = "127.0.0.1:3306";
+    private String nomeDoBanco = "SimuladorNotas";
+    private String usuario = "root";
+    private String senha = "facens";
+    
     
     // Bloco 4 - Pc gaby
     /*

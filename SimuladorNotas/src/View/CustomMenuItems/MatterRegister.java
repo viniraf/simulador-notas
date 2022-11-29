@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
 public class MatterRegister extends javax.swing.JPanel {
     
     MySQL conectar = new MySQL();
-    int studentId = StudentLoginPanel.studentId;
+    private int studentId;
 
     /**
      * Creates new form ProviderRegister
@@ -213,6 +213,7 @@ public class MatterRegister extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        studentId = StudentLoginPanel.studentId;
         RegisterMatter();
     }//GEN-LAST:event_btnCadastrarActionPerformed
 

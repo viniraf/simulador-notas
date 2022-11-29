@@ -23,10 +23,10 @@ ac2Multiplier	float(4,2)		default 1,
 noteAf			float(4,2)		default 0,
 afMultiplier	float(4,2)		default 1,
 noteSub			float(4,2)		default 0,
-subMultiplier	float(4,2)		default 1,
+subMultiplier	float(4,2)		default 0,
 noteAg			float(4,2)		default 0,
 agMultiplier	float(4,2)		default 1
 );
 
 insert into student (name, cpf, email, registration, login, password) values 
-('admin', '123', 'admin', 123, 'admin', '123');
+('aluno', '123', 'aluno', 123, 'aluno', '123');

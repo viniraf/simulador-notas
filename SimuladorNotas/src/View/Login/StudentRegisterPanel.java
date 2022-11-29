@@ -15,6 +15,7 @@ public class StudentRegisterPanel extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         txtCpf.setDocument(new OnlyNumbers());
+        txtRegistration.setDocument(new OnlyNumbers());
     }
 
     @SuppressWarnings("unchecked")
@@ -273,10 +274,22 @@ public class StudentRegisterPanel extends javax.swing.JFrame {
         txtPassword.setText("");
     }
     
+    private boolean chkRegister() {
+        boolean chkCampos = true;
+        if (txtName.getText().equals("") || txtCpf.getText().equals("") || txtEmail.getText().equals("") || txtRegistration.getText().equals("") || txtLogin.getText().equals("") || txtPassword.getText().equals("")) {
+            chkCampos = false;
+        }
+        return chkCampos;
+    }
+    
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+        if (chkRegister()) {
         RegisterEmployee();
         ClearData();
-        
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Todos os campos devem ser preenchidos!");
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
