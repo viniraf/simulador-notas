@@ -1,10 +1,3 @@
-# Como rodar o projeto na sua máquina
-* Clone o reposítorio na sua máquina;
-* Abra o arquivo com o script de banco de dados e rode ele no MySQL Workbench;
-* Configure a conexão do seu banco (servidor, banco, usuario e senha) corretamente na classe ConnectionSN dentro do pacote dao;
-* Dentro do script do banco tem um comando para criar um usuário admin por padrão, confira esse comando e veja a senha;
-* Após essa configuração, será possível você rodar o projeto pelo NetBeans, acessar o sistema e fazer as operações possíveis.
-
 # Informações gerais
 * Repositório para armazenar o projeto realizado durante a matéria de Fábrica de Projetos II;
 * Matéria ministrada pelo professor [Robson Martins](https://www.linkedin.com/in/robsonmartins/);
@@ -14,6 +7,19 @@
 * Sistema de simulação de notas;
 * Cadastro de máterias, cadastro de notas, pesos, valores e media desejada;
 * Geração de valores mínimos para atingir o média desejada.
+
+# Como rodar na sua máquina
+* Faça um clone do projeto em sua máquina utilizando o seguinte comando
+```bash
+git clone https://github.com/viniraf/simulador-notas
+```
+* Abra o MySQL Workbench e conecte no seu servidor;
+* Abra o Script SQL que está na pasta clonada e rode esse script;
+* Com o script executado, abra o NetBeans;
+* Clique em "Open a Project", encontre a pasta clonada e selecione o arquivo "SimuladorNotas";
+* Entre no pacote Connection e depois no arquivo MySQL.java;
+* Configure corretamente a conexão com o banco que você rodou o script;
+* Clique em Run Project.
 
 # Tecnologias 
 * Java Swing;
